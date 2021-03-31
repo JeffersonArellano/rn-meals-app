@@ -1,11 +1,32 @@
 import React from 'react';
-import { View, Text, Button, TextInput, StyleSheet } from 'react-native';
+import {
+  View,
+  Text,
+  Button,
+  TextInput,
+  StyleSheet,
+  FlatList,
+} from 'react-native';
+import CATEGORIES from '../../data/dummy-data';
+
+const renderGridItem = (itemData) => {
+  return (
+    <View>
+      <Text>{itemData.item.title}</Text>
+    </View>
+  );
+};
 
 const Categories = (props) => {
+  console.log('CATEGORIES', CATEGORIES);
+
   return (
-    <View style={{ ...props.style, ...styles.screen }}>
-      <Text> Categories Component</Text>
-    </View>
+    <FlatList
+      numColumns={2}
+      data={CATEGORIES}
+      keyExtractor={(item, index) => item.id}
+      renderItem={renderGridItem}
+    ></FlatList>
   );
 };
 

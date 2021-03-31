@@ -5,6 +5,12 @@ const MealDetails = (props) => {
   return (
     <View style={{ ...props.style, ...styles.screen }}>
       <Text> Meals Details Component</Text>
+      <Button
+        title='Go back to Parent'
+        onPress={() => {
+          props.navigation.popToTop();
+        }}
+      ></Button>
     </View>
   );
 };
