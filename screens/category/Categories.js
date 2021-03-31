@@ -3,16 +3,18 @@ import { View, Text, Button, TextInput, StyleSheet } from 'react-native';
 
 const Categories = (props) => {
   return (
-    <View style={{ ...props.style, ...styles.container }}>
+    <View style={{ ...props.style, ...styles.screen }}>
       <Text> Categories Component</Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
+  screen: {
     backgroundColor: '#FFFF2E',
-    width: '80%',
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 

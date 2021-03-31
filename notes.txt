@@ -1,0 +1,34 @@
+** Adding AppLoading
+
+We will do this by importing it like this:
+ import { AppLoading } from 'expo';
+
+This might fail for you - depending on the version of Expo you're using to follow along.
+
+If it does fail, try this alternative way of adding it:
+    expo install expo-app-loading
+    import AppLoading from 'expo-app-loading';
+
+Also add the following prop to the <AppLoading /> component (in your JSX code):
+    onError={(err) => console.log(err)}
+
+In the end, you should have:
+
+    <AppLoading
+        startAsync={fetchFonts}
+        onFinish={() => setFontLoaded(true)}
+        onError={(err) => console.log(err)}
+    />
+
+
+--------------------
+Font Configuration 
+
+- Run Command 
+    expo  install expo-font
+
+--------------------
+React Native Docs
+
+In case you want to dive into the official docs as well, 
+you can find the official docs here: https://reactnavigation.org/docs/4.x/getting-started
