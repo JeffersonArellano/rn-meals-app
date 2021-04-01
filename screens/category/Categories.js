@@ -6,19 +6,27 @@ import {
   TextInput,
   StyleSheet,
   FlatList,
+  TouchableOpacity,
 } from 'react-native';
 import CATEGORIES from '../../data/dummy-data';
 
-const renderGridItem = (itemData) => {
-  return (
-    <View>
-      <Text>{itemData.item.title}</Text>
-    </View>
-  );
-};
+import { CategoryGridTile } from '../../components/index';
 
 const Categories = (props) => {
-  console.log('CATEGORIES', CATEGORIES);
+  const renderGridItem = (itemData) => {
+    return (
+      <CategoryGridTile
+        title={itemData.item.title}
+        color={itemData.item.color}
+        onPress={() =>
+          props.navigation.navigate({
+            routeName: 'CategoryMeals',
+            params: { categoryId: itemData.item.id, category: itemData.item },
+          })
+        }
+      />
+    );
+  };
 
   return (
     <FlatList
