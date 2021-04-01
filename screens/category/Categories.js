@@ -1,18 +1,41 @@
 import React from 'react';
-import { View, Text, Button, TextInput, StyleSheet } from 'react-native';
+import { StyleSheet, FlatList } from 'react-native';
+import data from '../../data/dummy-data';
+
+import { CategoryGridTile } from '../../components/index';
 
 const Categories = (props) => {
+  const renderGridItem = (itemData) => {
+    return (
+      <CategoryGridTile
+        title={itemData.item.title}
+        color={itemData.item.color}
+        onPress={() =>
+          props.navigation.navigate({
+            routeName: 'CategoryMeals',
+            params: { categoryId: itemData.item.id, category: itemData.item },
+          })
+        }
+      />
+    );
+  };
+
   return (
-    <View style={{ ...props.style, ...styles.container }}>
-      <Text> Categories Component</Text>
-    </View>
+    <FlatList
+      numColumns={2}
+      data={data.CATEGORIES}
+      keyExtractor={(item, index) => item.id}
+      renderItem={renderGridItem}
+    ></FlatList>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
+  screen: {
     backgroundColor: '#FFFF2E',
-    width: '80%',
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 

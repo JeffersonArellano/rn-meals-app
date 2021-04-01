@@ -1,0 +1,70 @@
+** Adding AppLoading
+
+We will do this by importing it like this:
+ import { AppLoading } from 'expo';
+
+This might fail for you - depending on the version of Expo you're using to follow along.
+
+If it does fail, try this alternative way of adding it:
+    expo install expo-app-loading
+    import AppLoading from 'expo-app-loading';
+
+Also add the following prop to the <AppLoading /> component (in your JSX code):
+    onError={(err) => console.log(err)}
+
+In the end, you should have:
+
+    <AppLoading
+        startAsync={fetchFonts}
+        onFinish={() => setFontLoaded(true)}
+        onError={(err) => console.log(err)}
+    />
+
+
+--------------------
+Font Configuration 
+
+- Run Command 
+    expo  install expo-font
+
+--------------------
+React Native Docs
+
+In case you want to dive into the official docs as well, 
+you can find the official docs here: https://reactnavigation.org/docs/4.x/getting-started
+
+----------------------
+React  Navigation  packages
+    yarn  add  react-navigation
+    expo install react-native-gesture-handler react-native-reanimated 
+    react-native-screens react-native-safe-area-context @react-native-community/masked-view
+
+Official documentation  --> reactnavigation.org
+
+------------------------------
+Install Navigators
+
+Also add this import in the file where you are using createStackNavigator:
+
+    import { createStackNavigator } from 'react-navigation-stack';
+
+Same for TabsNavigator (used a little bit later in this module):
+
+    npm install --save react-navigation-tabs
+
+    import { createBottomTabNavigator } from 'react-navigation-tabs';
+
+And also for DrawerNavigator (also used later in this module):
+
+    npm install --save react-navigation-drawer
+
+    import { createDrawerNavigator } from 'react-navigation-drawer';
+
+-----------------------------------------------------------------
+** Header Buttons 
+
+In order to avoid errors, make sure you're using the correct version of that package => Version 6
+
+You can install that via npm install --save react-navigation-header-buttons@6
+
+(instead of just npm install --save react-navigation-header-buttons which I use in the next lecture)
