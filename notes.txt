@@ -59,3 +59,12 @@ And also for DrawerNavigator (also used later in this module):
     npm install --save react-navigation-drawer
 
     import { createDrawerNavigator } from 'react-navigation-drawer';
+
+-----------------------------------------------------------------
+** Header Buttons 
+
+In order to avoid errors, make sure you're using the correct version of that package => Version 6
+
+You can install that via npm install --save react-navigation-header-buttons@6
+
+(instead of just npm install --save react-navigation-header-buttons which I use in the next lecture)

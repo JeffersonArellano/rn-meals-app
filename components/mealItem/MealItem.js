@@ -11,11 +11,7 @@ const MealCard = (props) => {
         ...styles.mealItem,
       }}
     >
-      <TouchableOpacity
-        onPress={() => {
-          props.onSelectedMeal;
-        }}
-      >
+      <TouchableOpacity onPress={props.onSelectedMeal}>
         <View>
           <View style={{ ...styles.mealRow, ...styles.mealHeader }}>
             <ImageBackground

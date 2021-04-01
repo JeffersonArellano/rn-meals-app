@@ -1,4 +1,5 @@
 import CategoryGridTile from './categoryGridTile/CategoryGridTile';
-import MealItem from './mealCard/MealItem';
+import MealItem from './mealItem/MealItem';
+import CustomHeaderButton from './common/headerButton/HeaderButton';
 
-export { CategoryGridTile, MealItem };
+export { CategoryGridTile, MealItem, CustomHeaderButton };
