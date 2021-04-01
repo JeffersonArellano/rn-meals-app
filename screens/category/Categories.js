@@ -8,7 +8,7 @@ import {
   FlatList,
   TouchableOpacity,
 } from 'react-native';
-import CATEGORIES from '../../data/dummy-data';
+import data from '../../data/dummy-data';
 
 import { CategoryGridTile } from '../../components/index';
 
@@ -31,7 +31,7 @@ const Categories = (props) => {
   return (
     <FlatList
       numColumns={2}
-      data={CATEGORIES}
+      data={data.CATEGORIES}
       keyExtractor={(item, index) => item.id}
       renderItem={renderGridItem}
     ></FlatList>
