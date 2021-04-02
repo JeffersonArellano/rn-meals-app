@@ -32,7 +32,7 @@ const Categories = (props) => {
 
 Categories.navigationOptions = (navigationData) => {
   return {
-    headerLeft: (
+    headerLeft: () => (
       <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
         <Item
           title='Menu'

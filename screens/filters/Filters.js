@@ -15,7 +15,7 @@ const Filters = (props) => {
 Filters.navigationOptions = (navigationData) => {
   return {
     headerTitle: 'Filter Meals',
-    headerLeft: (
+    headerLeft: () => (
       <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
         <Item
           title='Menu'
