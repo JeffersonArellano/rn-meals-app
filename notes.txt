@@ -68,3 +68,8 @@ In order to avoid errors, make sure you're using the correct version of that pac
 You can install that via npm install --save react-navigation-header-buttons@6
 
 (instead of just npm install --save react-navigation-header-buttons which I use in the next lecture)
+
+-------------------------------------------------------------------
+Navigation  Tabs documentation 
+
+https://reactnavigation.org/docs/bottom-tab-navigator/
