@@ -1,23 +1,54 @@
 import React from 'react';
-import { View, Text, Button, TextInput, StyleSheet } from 'react-native';
+import {
+  ScrollView,
+  View,
+  Text,
+  Button,
+  Image,
+  TextInput,
+  StyleSheet,
+} from 'react-native';
 import data from '../../data/dummy-data';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
-import { CustomHeaderButton } from '../../components/index';
+import { CustomHeaderButton, DefaultText } from '../../components/index';
+
+const ListItem = (props) => {
+  return (
+    <View style={styles.listItem}>
+      <DefaultText>{props.children}</DefaultText>
+    </View>
+  );
+};
 
 const MealDetails = (props) => {
   const mealId = props.navigation.getParam('mealId');
   const selectedMeal = data.MEALS.find((meals) => meals.id === mealId);
 
   return (
-    <View style={{ ...props.style, ...styles.screen }}>
-      <Text> Meals Details Component ID {selectedMeal.id}</Text>
-      <Button
-        title='Go back to Parent'
-        onPress={() => {
-          props.navigation.popToTop();
-        }}
-      ></Button>
-    </View>
+    <ScrollView>
+      <Image
+        style={styles.image}
+        source={{ uri: selectedMeal.imageUrl }}
+      ></Image>
+      <View style={styles.details}>
+        <DefaultText>Duration : {selectedMeal.duration}m</DefaultText>
+        <DefaultText>
+          Complexity: {selectedMeal.complexity.toUpperCase()}
+        </DefaultText>
+        <DefaultText>
+          Affordability: {selectedMeal.affordability.toUpperCase()}
+        </DefaultText>
+      </View>
+      <Text style={styles.title}>Ingredients</Text>
+      {selectedMeal.ingredients.map((ingredient) => (
+        <ListItem key={ingredient}>{ingredient}</ListItem>
+      ))}
+
+      <Text style={styles.title}>Steps</Text>
+      {selectedMeal.steps.map((step) => (
+        <ListItem key={step}>{step}</ListItem>
+      ))}
+    </ScrollView>
   );
 };
 
@@ -42,10 +73,27 @@ MealDetails.navigationOptions = (navigationData) => {
 };
 
 const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+  image: {
+    width: '100%',
+    height: 200,
+  },
+  details: {
+    flexDirection: 'row',
+    padding: 15,
+    justifyContent: 'space-around',
+  },
+  title: {
+    fontFamily: 'open-sans-bold',
+    fontSize: 22,
+    textAlign: 'center',
+    color: 'black',
+  },
+  listItem: {
+    marginVertical: 10,
+    marginHorizontal: 20,
+    borderColor: '#ccc',
+    borderWidth: 1,
+    padding: 10,
   },
 });
 

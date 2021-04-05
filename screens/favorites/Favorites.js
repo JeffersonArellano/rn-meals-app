@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
-import { MealList } from '../../components/index';
+import { HeaderButtons, Item } from 'react-navigation-header-buttons';
+import { MealList, CustomHeaderButton } from '../../components/index';
 import data from '../../data/dummy-data';
 
 const Favorites = (props) => {
@@ -11,8 +11,21 @@ const Favorites = (props) => {
   return <MealList data={favMeals} navigation={props.navigation} />;
 };
 
-Favorites.navigationOptions = {
-  headerTitle: 'Your Favorites',
+Favorites.navigationOptions = (navigationData) => {
+  return {
+    headerTitle: 'Your Favorites',
+    headerLeft: () => (
+      <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
+        <Item
+          title='Menu'
+          iconName='ios-menu'
+          onPress={() => {
+            navigationData.navigation.toggleDrawer();
+          }}
+        />
+      </HeaderButtons>
+    ),
+  };
 };
 
 export default Favorites;
