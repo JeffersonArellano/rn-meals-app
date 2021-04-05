@@ -1,13 +1,56 @@
-import React from 'react';
-
+import React, { useState, useEffect, useCallback } from 'react';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
-import { View, Text, Button, TextInput, StyleSheet } from 'react-native';
-import { CustomHeaderButton } from '../../components/index';
+import { View, Text, StyleSheet } from 'react-native';
+import { CustomHeaderButton, FilterSwitch } from '../../components/index';
 
 const Filters = (props) => {
+  const { navigation } = props;
+
+  const [isGlutenFree, setIsglutenFree] = useState(false);
+  const [isLactoseFree, setIsLactoseFree] = useState(false);
+  const [isVegan, setIsVegan] = useState(false);
+  const [isVegetarian, setIsVegetarian] = useState(false);
+
+  const saveFilters = useCallback(() => {
+    const appliendFilters = {
+      glutenFree: isGlutenFree,
+      lactoseFree: isLactoseFree,
+      vegan: isVegan,
+      vegetarian: isVegetarian,
+    };
+
+    console.log(appliendFilters);
+  }, [isGlutenFree, isLactoseFree, isVegan, setIsVegetarian]);
+
+  useEffect(() => {
+    navigation.setParams({ save: saveFilters });
+  }, [saveFilters]);
+
   return (
     <View style={{ ...props.style, ...styles.screen }}>
-      <Text> Filters Component</Text>
+      <Text style={styles.title}> Availability Filters / Restriction </Text>
+
+      <FilterSwitch
+        text='Gluten Free'
+        value={isGlutenFree}
+        Onchange={(newValue) => setIsglutenFree(newValue)}
+      />
+      <FilterSwitch
+        text='Lactose-free'
+        value={isLactoseFree}
+        Onchange={(newValue) => setIsLactoseFree(newValue)}
+      />
+
+      <FilterSwitch
+        text='Is Vegan'
+        value={isVegan}
+        onChange={(newValue) => setIsVegan(newValue)}
+      />
+      <FilterSwitch
+        text='Is Vegetarian'
+        value={isVegetarian}
+        onChange={(newValue) => setIsVegetarian(newValue)}
+      />
     </View>
   );
 };
@@ -26,15 +69,35 @@ Filters.navigationOptions = (navigationData) => {
         />
       </HeaderButtons>
     ),
+    headerRight: () => (
+      <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
+        <Item
+          title='Save'
+          iconName='ios-save'
+          onPress={navigationData.navigation.getParam('save')}
+        />
+      </HeaderButtons>
+    ),
   };
 };
 
 const styles = StyleSheet.create({
   screen: {
-    backgroundColor: '#FFFF2E',
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
+  },
+  title: {
+    color: 'black',
+    fontFamily: 'open-sans-bold',
+    fontSize: 20,
+    margin: 20,
+    textAlign: 'center',
+  },
+  filterContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '80%',
   },
 });
 

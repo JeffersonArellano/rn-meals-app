@@ -1,12 +1,13 @@
 import React from 'react';
-import { View, Text, Button, FlatList, StyleSheet } from 'react-native';
+import { useSelector } from 'react-redux';
 import data from '../../data/dummy-data';
 import { MealList } from '../../components/index';
 
 const CategoryMeals = (props) => {
   const categoryId = props.navigation.getParam('categoryId');
+  const availableMeals = useSelector((state) => state.meals.filteredMeals);
 
-  const mealsList = data.MEALS.filter(
+  const mealsList = availableMeals.filter(
     (meal) => meal.categoryIds.indexOf(categoryId) >= 0
   );
 
@@ -23,13 +24,5 @@ CategoryMeals.navigationOptions = (navigationData) => {
     headerTitle: selectedCategory.title,
   };
 };
-
-const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
 
 export default CategoryMeals;
