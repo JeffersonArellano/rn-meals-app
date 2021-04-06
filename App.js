@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import { Provider } from 'react-redux';
 import { StyleSheet, Text, View } from 'react-native';
 import AppLoading from 'expo-app-loading';

@@ -2,7 +2,8 @@ import React from 'react';
 import { StyleSheet, FlatList } from 'react-native';
 import data from '../../data/dummy-data';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
-import { CategoryGridTile, CustomHeaderButton } from '../../components/index';
+import CategoryGridTile from '../../components/categoryGridTile/CategoryGridTile';
+import CustomHeaderButton from '../../components/common/customHeaderButton/CustomHeaderButton';
 
 const Categories = (props) => {
   const renderGridItem = (itemData) => {
